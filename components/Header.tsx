@@ -167,16 +167,35 @@ const Header = () => {
                 <a className=''>Games</a>
               </Link>
             </li>
-            <li>
-              <Link href='/login'>
-                <a className=''>Login</a>
-              </Link>
-            </li>
-            <li>
-              <Link href='/sign-up'>
-                <a className=''>Sign Up</a>
-              </Link>
-            </li>
+            {!session ? (
+              <li>
+                <button
+                  type='button'
+                  onClick={() => signIn()}
+                  className={`${
+                    router.pathname === '/login'
+                      ? 'text-houm-orange border-b border-houm-orange'
+                      : ''
+                  } hover:text-houm-orange transition-colors duration-150 ease-linear`}
+                >
+                  Login/Sign Up
+                </button>
+              </li>
+            ) : (
+              <li>
+                <button
+                  type='button'
+                  onClick={() => signOut()}
+                  className={`${
+                    router.pathname === '/sign-up'
+                      ? 'text-houm-orange border-b border-houm-orange'
+                      : ''
+                  } hover:text-houm-orange transition-colors duration-150 ease-linear`}
+                >
+                  Sign Out
+                </button>
+              </li>
+            )}
           </ul>
         </nav>
       </header>
