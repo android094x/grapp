@@ -19,7 +19,7 @@ const HeroBG = () => {
             {' '}
             Welcome{' '}
             <span className='text-houm-orange'>
-              {session?.user ? session.user.name : 'Stranger'}
+              {session?.user ? session?.user?.name?.split(' ')[0] : 'Stranger'}
             </span>
             !
           </h2>
