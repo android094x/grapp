@@ -8,11 +8,14 @@ export default async function handler(
   res: NextApiResponse<GamesType | { message: any }>
 ) {
   try {
+    let variables = req.query['variables[]'];
+
+    if (Array.isArray(req.query['variables[]'])) {
+      variables = req.query['variables[]'].filter((item) => item !== '');
+    }
     const { data }: GamesType = await axios.get(
       `${req.query.baseUrl}${
-        Array.isArray(req.query['variables[]'])
-          ? req.query['variables[]'].join('&')
-          : ''
+        Array.isArray(variables) ? variables.join('&') : ''
       }&key=${process.env.RAWG_API_KEY}`
     );
 

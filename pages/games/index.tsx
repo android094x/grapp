@@ -23,6 +23,10 @@ const GamesListPage = () => {
   // Filter related states
   const [searchTerm, setSearchTerm] = React.useState<string>('');
   const [debouncedTerm, setDebouncedTerm] = React.useState(searchTerm);
+  const [platforms, setPlatforms] = React.useState<string>('');
+  const [stores, setStores] = React.useState<string>('');
+  const [tags, setTags] = React.useState<string>('');
+  const [genres, setGenres] = React.useState<string>('');
 
   const fetchGames = async (page = 1, pageSize = 12) => {
     setLoading(true);
@@ -36,6 +40,10 @@ const GamesListPage = () => {
           `${
             debouncedTerm ? `search=${debouncedTerm}&` : ''
           }search_exact=true&search_precise=true`,
+          `${platforms ? `parent_platforms=${platforms}` : ''}`,
+          `${stores ? `stores=${stores}` : ''}`,
+          `${tags ? `tags=${tags}` : ''}`,
+          `${genres ? `genres=${genres}` : ''}`,
         ],
       },
     });
@@ -63,14 +71,6 @@ const GamesListPage = () => {
   }, []);
 
   React.useEffect(() => {
-    console.log('next', nextPage);
-  }, [nextPage]);
-
-  React.useEffect(() => {
-    console.log('prev', previousPage);
-  }, [previousPage]);
-
-  React.useEffect(() => {
     const timerId = setTimeout(() => {
       setDebouncedTerm(searchTerm);
     }, 500);
@@ -85,10 +85,6 @@ const GamesListPage = () => {
       fetchGames();
     }
   }, [debouncedTerm]);
-
-  const handleSearchGameByName = () => {
-    fetchGames();
-  };
 
   const handleNextPageClick = () => {
     if (nextPage) {
@@ -111,25 +107,34 @@ const GamesListPage = () => {
           </a>
         </p>
       </Banner>
-      <section className='flex flex-col lg:flex-row container mx-auto py-9'>
+      <section className='flex flex-col lg:flex-row container mx-auto py-9 px-4 md:px-0 space-y-6 lg:space-y-0'>
         <GamesFilterComponent
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
-          handleSearchGameByName={handleSearchGameByName}
         />
         {!loading ? (
           <div className='container mx-auto w-full lg:w-4/5 flex flex-col space-y-6'>
-            <div className='grid gap-y-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center'>
-              {games && games.map((game) => <Card key={game.id} {...game} />)}
-            </div>
-            <div className='w-full flex justify-center items-center space-x-4'>
-              <button type='button' onClick={handlePreviousPageClick}>
-                Previous
-              </button>
-              <button type='button' onClick={handleNextPageClick}>
-                Next
-              </button>
-            </div>
+            {games.length ? (
+              <>
+                <div className='grid gap-y-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center'>
+                  {games.map((game) => (
+                    <Card key={game.id} {...game} />
+                  ))}
+                </div>
+                <div className='w-full flex justify-center items-center space-x-4'>
+                  <button type='button' onClick={handlePreviousPageClick}>
+                    Previous
+                  </button>
+                  <button type='button' onClick={handleNextPageClick}>
+                    Next
+                  </button>
+                </div>
+              </>
+            ) : (
+              <span className='w-full font-press-start-2p text-center'>
+                Nothing was found
+              </span>
+            )}
           </div>
         ) : (
           <div className='w-full h-full items-center flex justify-center'>
