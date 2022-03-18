@@ -13,10 +13,10 @@ const Review = ({
   return (
     <div>
       <p>{data.review}</p>
-      <hr />
-      <div className='flex justify-between'>
+      <hr className='py-1' />
+      <div className='flex flex-col sm:flex-row sm:justify-between space-y-3 sm:space-y-0'>
         <StarRating rating={data.score} />
-        <span className='flex items-center space-x-2 text-sm'>
+        <span className='flex justify-between sm:justify-start items-center space-x-2 text-sm'>
           <h5 className='font-bold text-xs font-press-start-2p text-houm-orange'>
             {data.userEmail}
           </h5>

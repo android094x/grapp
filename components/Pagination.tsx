@@ -43,7 +43,7 @@ const Pagination = ({
   };
 
   return (
-    <div>
+    <div className='flex flex-col space-y-4'>
       <>
         {getPaginatedData().map((item: any) => (
           <RenderComponent key={item.id} data={item} {...extraProps} />

@@ -20,10 +20,14 @@ const Card = (props: CardProps) => {
     <>
       <div className='flex justify-center relative w-[270px] h-[420px] lg:w-[250px] lg:h-[370px] rounded-xl overflow-hidden'>
         <Image
-          src={props.background_image}
+          src={
+            props?.background_image
+              ? props.background_image
+              : '/images/image-not-found.jpg'
+          }
           layout='fill'
           objectFit='cover'
-          alt='gtav'
+          alt={`${props.name} background image`}
         />
         <div className='top-0 left-0 absolute bg-black bg-opacity-40 h-full w-full' />
         <div
@@ -53,13 +57,13 @@ const Card = (props: CardProps) => {
               <h4>Platforms:</h4>
               <div className='flex items-center'>
                 {props.parent_platforms
-                  .filter(
+                  ?.filter(
                     ({ platform }) =>
                       platform.slug === 'pc' ||
                       platform.slug === 'playstation' ||
                       platform.slug === 'xbox'
                   )
-                  .map(({ platform }) => (
+                  ?.map(({ platform }) => (
                     <Image
                       src={`/images/${platform.slug}-icon.svg`}
                       width={16}
