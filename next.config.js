@@ -4,6 +4,9 @@ const nextConfig = {
     domains: ['media.rawg.io'],
   },
   reactStrictMode: true,
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 };
 
 module.exports = nextConfig;

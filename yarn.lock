@@ -2,6 +2,18 @@
 # yarn lockfile v1
 
 
+"@algolia/autocomplete-core@^1.5.3":
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/@algolia/autocomplete-core/-/autocomplete-core-1.5.3.tgz#5acc772ffc26ed433229e8556e2669bd51b2d529"
+  integrity sha512-hl0DAT7kU3BItafYLx/O8Z0xPaDnU9PpEPP5n1CgmaUwT/CA3YAIILuk37aA2OyP6R3aCsCyQl4IWQJQzjZ6mA==
+  dependencies:
+    "@algolia/autocomplete-shared" "1.5.3"
+
+"@algolia/autocomplete-shared@1.5.3":
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/@algolia/autocomplete-shared/-/autocomplete-shared-1.5.3.tgz#c4c926ea2896622fc9c5eb033f2bf29aad8f00b0"
+  integrity sha512-9eQqd9Zu+7SdAxv9H58clcUEKtiKDEW9KLE3sY2e0MlFbRgWV1UrtF1PbXOk/v1cDe+NS/GOXPqrWuf7traDpw==
+
 "@babel/code-frame@^7.0.0":
   version "7.16.7"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.16.7.tgz#44416b6bd7624b998f5b1af5d470856c40138789"

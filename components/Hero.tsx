@@ -1,4 +1,5 @@
 import { useSession } from 'next-auth/react';
+import Search from './Search';
 
 const HeroBG = () => {
   const { data: session } = useSession();
@@ -27,10 +28,11 @@ const HeroBG = () => {
             Search for <span className='text-houm-orange font-bold'>any</span>{' '}
             game you want to review
           </p>
-          <input
+          {/* <input
             type='text'
             className='w-3/4 py-1 px-3 rounded-full text-xl outline-none focus:border-houm-orange border-2'
-          />
+          /> */}
+          <Search />
         </div>
       </section>
     </>
