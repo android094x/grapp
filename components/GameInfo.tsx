@@ -1,15 +1,8 @@
 import * as React from 'react';
 import Image from 'next/image';
-import SimpleImageSlider from 'react-simple-image-slider';
 import { ResultsType } from '../types';
 
 const GameInfo = ({ game }: { game: ResultsType }) => {
-  const [images] = React.useState([
-    game?.short_screenshots?.map((item) => ({ url: item.image })),
-  ]);
-
-  console.log(game);
-
   const refactorArrayOfData = (key: 'tags' | 'developers' | 'genres') => {
     return game[key].map((item: { name: string }, idx: number) => {
       if (idx + 1 !== game[key].length) {
