@@ -1,4 +1,5 @@
 import { useSession } from 'next-auth/react';
+import Link from 'next/link';
 
 const HeroBG = () => {
   const { data: session } = useSession();
@@ -24,13 +25,15 @@ const HeroBG = () => {
             !
           </h2>
           <p className='text-white text-sm md:text-xl'>
-            Search for <span className='text-houm-orange font-bold'>any</span>{' '}
-            game you want to review
+            This is a web app where you can search & review{' '}
+            <span className='text-houm-orange font-bold'>any</span> game you
+            want!
           </p>
-          <input
-            type='text'
-            className='w-3/4 py-1 px-3 rounded-full text-xl outline-none focus:border-houm-orange border-2'
-          />
+          <Link href='/games'>
+            <a className='bg-houm-orange text-2xl px-8 py-4 rounded-full text-white hover:bg-houm-dark-orange transition-all duration-200 ease-out hover:scale-110 hover:skew-x-6'>
+              Start here!
+            </a>
+          </Link>
         </div>
       </section>
     </>

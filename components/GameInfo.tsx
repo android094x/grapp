@@ -1,7 +1,16 @@
+import * as React from 'react';
 import Image from 'next/image';
+import SimpleImageSlider from 'react-simple-image-slider';
+import { ResultsType } from '../types';
 
-const GameCardInfo = ({ game }: any) => {
-  const refactorArrayOfData = (key: string) => {
+const GameInfo = ({ game }: { game: ResultsType }) => {
+  const [images] = React.useState([
+    game?.short_screenshots?.map((item) => ({ url: item.image })),
+  ]);
+
+  console.log(game);
+
+  const refactorArrayOfData = (key: 'tags' | 'developers' | 'genres') => {
     return game[key].map((item: { name: string }, idx: number) => {
       if (idx + 1 !== game[key].length) {
         return `${item.name} | `;
@@ -14,7 +23,7 @@ const GameCardInfo = ({ game }: any) => {
     <section className='container mx-auto mb-5 mt-10 space-y-6 px-4 lg:px-10 xl:px-0'>
       <div className='flex flex-col lg:flex-row w-full'>
         <div className='flex justify-center w-full lg:w-2/5'>
-          <figure className='w-[350px] h-[350px] lg:w-[400px] lg:h-[400px] relative'>
+          <figure className='w-[450px] h-[350px] lg:w-[500px] lg:h-[400px] relative'>
             <Image
               src={game.background_image}
               alt=''
@@ -93,4 +102,4 @@ const GameCardInfo = ({ game }: any) => {
   );
 };
 
-export default GameCardInfo;
+export default GameInfo;

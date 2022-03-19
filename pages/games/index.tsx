@@ -1,6 +1,7 @@
 import * as React from 'react';
 import axios from 'axios';
 import ReactLoading from 'react-loading';
+import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 
 import Card from '../../components/Card';
 import Banner from '../../components/Banner';
@@ -347,10 +348,20 @@ const GamesListPage = () => {
                 </div>
                 <div className='w-full flex justify-center items-center space-x-4'>
                   <button type='button' onClick={handlePreviousPageClick}>
-                    Previous
+                    <FaAngleLeft
+                      size={64}
+                      className='text-houm-gray hover:text-houm-orange'
+                    />
                   </button>
+                  <p>
+                    Page {nextPage ? nextPage - 1 : previousPage} out of{' '}
+                    {Math.round(count / 12)}
+                  </p>
                   <button type='button' onClick={handleNextPageClick}>
-                    Next
+                    <FaAngleRight
+                      size={64}
+                      className='text-houm-gray hover:text-houm-orange'
+                    />
                   </button>
                 </div>
               </>

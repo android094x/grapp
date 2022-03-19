@@ -14,12 +14,15 @@ export type ResultsType = {
   released: string;
   tba: boolean;
   background_image: string;
+  background_image_additional: string;
   metacritic: number;
   rating: number;
+  description_raw: string;
   parent_platforms: {
     platform: Generic;
   }[];
   genres: Generic[];
+  developers: Generic[];
   stores: {
     id: number;
     store: Generic;

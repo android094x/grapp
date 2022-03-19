@@ -1,6 +1,6 @@
 import * as React from 'react';
-import Head from 'next/head';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 import Header from './Header';
 import HeroBG from './Hero';

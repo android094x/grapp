@@ -10,8 +10,9 @@ import type { Review } from '@prisma/client';
 import Pagination from '../../components/Pagination';
 import ReviewComponent from '../../components/Review';
 import ReviewForm from '../../components/ReviewForm';
-import GameCardInfo from '../../components/GameCardInfo';
+import GameInfo from '../../components/GameInfo';
 import Banner from '../../components/Banner';
+import { ResultsType } from '../../types';
 
 export const getServerSideProps: GetServerSideProps = async (
   context: GetServerSidePropsContext
@@ -35,7 +36,7 @@ export const getServerSideProps: GetServerSideProps = async (
   }
 };
 
-const GamePage = ({ game }: { game: any }) => {
+const GamePage = ({ game }: { game: ResultsType }) => {
   const { data: session } = useSession();
   const [reviews, setReviews] = React.useState<Review[]>([]);
   const [loading, setLoading] = React.useState(false);
@@ -65,7 +66,7 @@ const GamePage = ({ game }: { game: any }) => {
   return (
     <>
       <Banner title={game.name} imageUrl={game.background_image_additional} />
-      <GameCardInfo game={game} />
+      <GameInfo game={game} />
       <section className='container mx-auto pb-10 space-y-6 px-4 lg:px-10 xl:px-0'>
         <h4 className='text-houm-orange font-bold text-lg mb-4'>Reviews</h4>
         {(reviews.length && session) || (reviews.length && !session) ? (
@@ -118,7 +119,10 @@ const GamePage = ({ game }: { game: any }) => {
                 per game
               </p>
             ) : (
-              <ReviewForm game={game} setReviews={setReviews} />
+              <ReviewForm
+                game={{ id: `${game.id}`, name: game.name }}
+                setReviews={setReviews}
+              />
             )}
           </>
         )}

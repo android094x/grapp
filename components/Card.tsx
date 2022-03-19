@@ -18,7 +18,7 @@ interface CardProps {
 const Card = (props: CardProps) => {
   return (
     <>
-      <div className='flex justify-center relative w-[270px] h-[420px] lg:w-[250px] lg:h-[370px] rounded-xl overflow-hidden'>
+      <div className='flex justify-center relative w-[270px] h-[420px] lg:w-[250px] lg:h-[370px] rounded-xl overflow-hidden hover:scale-110 transition-all duration-150'>
         <Image
           src={
             props?.background_image
@@ -76,7 +76,7 @@ const Card = (props: CardProps) => {
             </div>
           </div>
           <Link href={`/games/${props.id}`}>
-            <a className='flex justify-center border border-white rounded-full py-1 mt-2 hover:text-houm-orange hover:border-houm-orange transition-colors duration-200 ease-out'>
+            <a className='flex justify-center border border-white rounded-full py-1 mt-2 hover:text-houm-orange hover:border-houm-orange hover:scale-105 transition-all duration-200 ease-out'>
               Check out!
             </a>
           </Link>

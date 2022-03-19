@@ -1,5 +1,7 @@
 import { SessionProvider } from 'next-auth/react';
 
+import { AnimatePresence } from 'framer-motion';
+
 import Layout from '../components/Layout';
 
 import '../styles/globals.css';
@@ -9,7 +11,13 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <SessionProvider session={pageProps.session}>
       <Layout>
-        <Component {...pageProps} />
+        <AnimatePresence
+          exitBeforeEnter
+          initial={false}
+          onExitComplete={() => window.scrollTo(0, 0)}
+        >
+          <Component {...pageProps} />
+        </AnimatePresence>
       </Layout>
     </SessionProvider>
   );
