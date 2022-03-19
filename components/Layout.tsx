@@ -20,7 +20,11 @@ const Layout = ({ children }: ComponentProps) => {
       </Head>
       <Header />
       {router.pathname === '/' && <HeroBG />}
-      <main className='w-full min-h-screen'>{children}</main>
+      <main
+        className={`w-full ${router.pathname === '/' ? 'min-h-screen' : ''}`}
+      >
+        {children}
+      </main>
       {router.pathname !== '/' && (
         <footer className='w-full text-center bg-houm-gray text-white py-2'>
           Copyright © <span className='text-houm-orange'>GRAPP</span>. All
