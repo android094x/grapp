@@ -21,7 +21,7 @@ const Layout = ({ children }: ComponentProps) => {
       <Header />
       {router.pathname === '/' && <HeroBG />}
       <main
-        className={`w-full ${router.pathname === '/' ? 'min-h-screen' : ''}`}
+        className={`w-full ${router.pathname !== '/' ? 'min-h-screen' : ''}`}
       >
         {children}
       </main>
